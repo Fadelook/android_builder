@@ -32,7 +32,7 @@ jobs:
 
         
       - name: Build the app
-        working-directory: ./project/android/gradle/wrapper
+        working-directory: ./project/android/
         run: |
           if [ ! -f "gradlew" ]; then gradle wrapper; fi
           chmod +x gradlew
