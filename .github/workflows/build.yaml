@@ -18,19 +18,21 @@ jobs:
         with:
           java-version: 21
           distribution: 'adopt'  # 添加这一行
-      - id: get-project
-        name: Get project name
-        run: echo "PROJECT=$(cat project-to-build)" >>$GITHUB_OUTPUT
-      - name: Clone project
-        run: git clone --depth=1 ${{ steps.get-project.outputs.PROJECT }} project
       - name: Setup Flutter
         run: |
           git clone https://github.com/flutter/flutter.git -b stable --depth 1
           echo "FLUTTER_HOME=$(pwd)/flutter" >> $GITHUB_ENV
           echo "PATH=$PATH:$(pwd)/flutter/bin" >> $GITHUB_ENV
+          
+      - id: get-project
+        name: Get project name
+        run: echo "PROJECT=$(cat project-to-build)" >>$GITHUB_OUTPUT
+      - name: Clone project
+        run: git clone --depth=1 ${{ steps.get-project.outputs.PROJECT }} project
+
         
       - name: Build the app
-        working-directory: ./project/android/app
+        working-directory: ./project
         run: |
           if [ ! -f "gradlew" ]; then gradle wrapper; fi
           chmod +x gradlew
