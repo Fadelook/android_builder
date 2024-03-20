@@ -30,15 +30,14 @@ jobs:
       - name: Clone project
         run: git clone --depth=1 ${{ steps.get-project.outputs.PROJECT }} project
 
-        
       - name: Build the app
-        working-directory: ./project/android/app
+        working-directory: ./project/
         run: |
-          if [ ! -f "gradlew" ]; then gradle wrapper; fi
-          chmod +x gradlew
-          ./gradlew assembleDebug --stacktrace
+          if [ ! -f "android/gradlew" ]; then gradle wrapper; fi
+          chmod +x android/gradlew
+          ./android/gradlew assembleDebug --stacktrace
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
           name: my-build-apk
-          path: ./**/*.apk
+          path: ./project/build/outputs/apk/**/*.apk
