@@ -23,6 +23,12 @@ jobs:
         run: echo "PROJECT=$(cat project-to-build)" >>$GITHUB_OUTPUT
       - name: Clone project
         run: git clone --depth=1 ${{ steps.get-project.outputs.PROJECT }} project
+      - name: Setup Flutter
+        run: |
+          git clone https://github.com/flutter/flutter.git -b stable --depth 1
+          echo "FLUTTER_HOME=$(pwd)/flutter" >> $GITHUB_ENV
+          echo "PATH=$PATH:$(pwd)/flutter/bin" >> $GITHUB_ENV
+        
       - name: Build the app
         working-directory: ./project/android/app
         run: |
