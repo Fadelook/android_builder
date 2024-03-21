@@ -25,7 +25,6 @@ jobs:
           echo "PATH=$PATH:$(pwd)/flutter/bin" >> $GITHUB_ENV
           echo "flutter.sdk=$(pwd)/flutter" > .local.properties
           echo $PATH  # 添加这一行，用于调试
-          flutter pub get  # 添加这一行
           flutter doctor  # 添加这一行，用于验证 Flutter 是否可以正常运行
 
           
