@@ -33,7 +33,6 @@ jobs:
       - name: Build the app
         working-directory: ./project/android/
         run: |
-          if [ ! -f "android/gradlew" ]; then gradle wrapper; fi
           chmod +x android/gradlew
           ./android/gradlew assembleDebug --stacktrace
       - name: Upload APK
