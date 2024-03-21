@@ -39,10 +39,6 @@ jobs:
         working-directory: ./project/android/
         run: flutter pub get
 
-      - name: flutter run
-        working-directory: ./project/android/
-        run: flutter run
-
 
       - name: Build the app
         working-directory: ./project/android/
