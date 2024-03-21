@@ -33,7 +33,7 @@ jobs:
       - name: Build the app
         working-directory: ./project/android/
         run: |
-          chmod +x ./gradlew
+          chmod +x .android/gradlew
           ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK
