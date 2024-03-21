@@ -31,7 +31,7 @@ jobs:
         run: git clone --depth=1 ${{ steps.get-project.outputs.PROJECT }} project
 
       - name: Build the app
-        working-directory: ./project/android/gradle/wrapper
+        working-directory: ./project/android/
         run: |
           if [ ! -f "gradlew" ]; then gradle wrapper; fi
           chmod +x gradlew
