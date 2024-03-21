@@ -30,11 +30,16 @@ jobs:
         run: echo "PROJECT=$(cat project-to-build)" >>$GITHUB_OUTPUT
       - name: Clone project
         run: git clone --depth=1 ${{ steps.get-project.outputs.PROJECT }} project
+      
+      - name: Flutter clean
+        run: flutter clean
 
       - name: Run Flutter command
         working-directory: ./project/android/
         run: flutter pub get
-        
+
+      - name: flutter run
+        run: flutter run
 
 
       - name: Build the app
