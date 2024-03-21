@@ -32,9 +32,7 @@ jobs:
 
       - name: Build the app
         working-directory: ./project/android/
-        run: |
-          chmod +x android/app
-          ./android/app/gradlew assembleDebug --stacktrace
+        run: android/gradlew assembleDebug --stacktrace
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
