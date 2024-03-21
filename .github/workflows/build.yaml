@@ -24,7 +24,7 @@ jobs:
           echo "FLUTTER_HOME=$(pwd)/flutter" >> $GITHUB_ENV
           echo "PATH=$PATH:$(pwd)/flutter/bin" >> $GITHUB_ENV
           echo "flutter.sdk=$(pwd)/flutter" > .local.properties
-
+          flutter pub get  # 添加这一行
           
       - id: get-project
         name: Get project name
