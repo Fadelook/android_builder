@@ -40,6 +40,7 @@ jobs:
         run: flutter pub get
 
       - name: flutter run
+        working-directory: ./project/android/
         run: flutter run
 
 
